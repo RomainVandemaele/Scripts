@@ -20,6 +20,12 @@ class Anime :
 
     def hasBeenAired(self) :
         now = datetime.datetime.now()
+        date = datetime.date(now.year,now.month,now.day)
+        #print(self.name,date.weekday,self.day)
+        if(date.weekday() == self.day and ( (self.hour == now.hour and self.minute >= now.minute) or (self.hour > now.hour ) ) ) :
+            return True
+        else :
+            return False
 
     def willBeAiredToday(self) :
         now = datetime.datetime.now()
@@ -47,14 +53,26 @@ def initAnime() :
 
 def main() :
     initAnime()
+    notif1 = [False for i in range(len(animes))]
+    notif2 = [False for i in range(len(animes))]
     while(True) :
         now = datetime.datetime.now()
         print(now.day,now.hour,now.minute)
         for anime in animes :
-            if anime.willBeAiredToday() :
-                print(anime)
+            index = animes.index(anime)
+
+            if now.hour >= 10 and anime.willBeAiredToday() and notif2[index] == False : #when available today
                 os.system("notify-send \"" + str(anime) + "\"")
+                notif2[index] = True
+
+            if now.hour >= 10 and anime.hasBeenAired() and notif1[index] == False : #when available now
+                os.system("notify-send \"" + anime.name + " is available now on " + anime.platform + "\"")
+                notif1[index] = True
+
         time.sleep(60*5)
+        if( now.hour == 23) : #reset
+            notif1 = [False for i in range(len(animes))]
+            notif2 = [False for i in range(len(animes))]
     #date = datetime.date(now.year,now.month,now.day)
     #print(date.weekday())
 

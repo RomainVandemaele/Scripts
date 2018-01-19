@@ -49,7 +49,7 @@ def initAnime() :
     animes.append(Anime("Darling in the franxx",5,18,0,"crunchyroll"))
     animes.append(Anime("The ancient magus bride",5,19,30,"crunchyroll"))
     animes.append(Anime("Violet evergarden",3,14,30,"netflix")) #approx time
-    animes.append(Anime("After rain",3,19,40,"amazon")) #approx time
+    animes.append(Anime("After rain",3,19,0,"amazon")) #approx time
 
 def main() :
     initAnime()
@@ -57,7 +57,7 @@ def main() :
     notif2 = [False for i in range(len(animes))]
     while(True) :
         now = datetime.datetime.now()
-        print(now.day,now.hour,now.minute)
+        #print(now.day,now.hour,now.minute)
         for anime in animes :
             index = animes.index(anime)
 

@@ -40,7 +40,7 @@ def initAnime() :
     animes.append(Anime("Minuscule",4,14,30,"wakanim"))
     animes.append(Anime("Sangatsu no lion 2",5,17,40,"wakanim"))
     animes.append(Anime("Mitsuboshi colors",6,15,30,"wakanim"))
-    animes.append(Anime("Dagashi kashi 2",5,15,0,"adn"))
+    animes.append(Anime("Dagashi kashi 2",4,15,0,"adn"))
     animes.append(Anime("Karakai jozu no takagi-kun",0,17,30,"crunchyroll"))
     animes.append(Anime("Yowamushi pedal 4",0,21,5,"crunchyroll"))
     animes.append(Anime("A place further in the universe",1,14,30,"crunchyroll"))

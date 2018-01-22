@@ -16,13 +16,16 @@ class Anime :
         self.platform = platform
 
     def __str__(self) :
-        return self.name + " at " + str(self.hour) + ":" + str(self.minute) + " on " +self.platform
+        minute = str(self.minute)
+        if (self.minute < 10) :
+            minute = "0" + minute
+        return self.name + " at " + str(self.hour) + ":" + minute + " on " +self.platform
 
     def hasBeenAired(self) :
         now = datetime.datetime.now()
         date = datetime.date(now.year,now.month,now.day)
-        #print(self.name,date.weekday,self.day)
-        if(date.weekday() == self.day and ( (self.hour == now.hour and self.minute >= now.minute) or (self.hour > now.hour ) ) ) :
+        #print(self.name,now.hour,now.minute)
+        if(date.weekday() == self.day and ( (self.hour == now.hour and self.minute <= now.minute) or (self.hour < now.hour ) ) ) :
             return True
         else :
             return False
@@ -45,7 +48,7 @@ def initAnime() :
     animes.append(Anime("Yowamushi pedal 4",0,21,5,"crunchyroll"))
     animes.append(Anime("A place further in the universe",1,14,30,"crunchyroll"))
     animes.append(Anime("Laid-back camp",3,16,30,"crunchyroll"))
-    animes.append(Anime("Citrus",5,15,0,"crunchyroll"))
+    animes.append(Anime("Citrus",5,17,0,"crunchyroll"))
     animes.append(Anime("Darling in the franxx",5,18,0,"crunchyroll"))
     animes.append(Anime("The ancient magus bride",5,19,30,"crunchyroll"))
     animes.append(Anime("Violet evergarden",3,14,30,"netflix")) #approx time

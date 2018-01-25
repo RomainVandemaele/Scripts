@@ -40,19 +40,24 @@ class Anime :
             return False
 
 def initAnime() :
-    animes.append(Anime("Minuscule",4,14,30,"wakanim"))
-    animes.append(Anime("Sangatsu no lion 2",5,17,40,"wakanim"))
-    animes.append(Anime("Mitsuboshi colors",6,15,30,"wakanim"))
-    animes.append(Anime("Dagashi kashi 2",4,15,0,"adn"))
     animes.append(Anime("Karakai jozu no takagi-kun",0,17,30,"crunchyroll"))
     animes.append(Anime("Yowamushi pedal 4",0,21,5,"crunchyroll"))
+
     animes.append(Anime("A place further in the universe",1,14,30,"crunchyroll"))
+
+    animes.append(Anime("Violet evergarden",3,14,30,"netflix")) #approx time
     animes.append(Anime("Laid-back camp",3,16,30,"crunchyroll"))
+    animes.append(Anime("After rain",3,19,0,"amazon")) #approx time
+
+    animes.append(Anime("Minuscule",4,14,30,"wakanim"))
+    animes.append(Anime("Dagashi kashi 2",4,15,0,"adn"))
+
+    animes.append(Anime("Sangatsu no lion 2",5,17,40,"wakanim"))
     animes.append(Anime("Citrus",5,17,0,"crunchyroll"))
     animes.append(Anime("Darling in the franxx",5,18,0,"crunchyroll"))
     animes.append(Anime("The ancient magus bride",5,19,30,"crunchyroll"))
-    animes.append(Anime("Violet evergarden",3,14,30,"netflix")) #approx time
-    animes.append(Anime("After rain",3,19,0,"amazon")) #approx time
+
+    animes.append(Anime("Mitsuboshi colors",6,15,30,"wakanim"))
 
 def main() :
     initAnime()

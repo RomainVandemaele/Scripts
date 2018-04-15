@@ -40,24 +40,21 @@ class Anime :
             return False
 
 def initAnime() :
-    animes.append(Anime("Karakai jozu no takagi-kun",0,17,30,"crunchyroll"))
+    animes.append(Anime("Magical girl ore",0,16,00,"crunchyroll"))
+    animes.append(Anime("Golden kamui",0,18,30,"crunchyroll"))
     animes.append(Anime("Yowamushi pedal 4",0,21,5,"crunchyroll"))
 
-    animes.append(Anime("A place further in the universe",1,14,30,"crunchyroll"))
+    animes.append(Anime("Steins gate 0",2,19,30,"wakanim"))
 
-    animes.append(Anime("Violet evergarden",3,14,30,"netflix")) #approx time
-    animes.append(Anime("Laid-back camp",3,16,30,"crunchyroll"))
-    animes.append(Anime("After rain",3,19,0,"amazon")) #approx time
+    animes.append(Anime("Hinamatsuri",4,15,30,"crunchyroll"))
 
-    animes.append(Anime("Minuscule",4,14,30,"wakanim"))
-    animes.append(Anime("Dagashi kashi 2",4,15,0,"adn"))
-
-    animes.append(Anime("Sangatsu no lion 2",5,17,40,"wakanim"))
-    animes.append(Anime("Citrus",5,17,0,"crunchyroll"))
+    animes.append(Anime("My hero academia",5,11,30,"ADN"))
+    animes.append(Anime("Amanchu advance",5,17,0,"crunchyroll"))
     animes.append(Anime("Darling in the franxx",5,18,0,"crunchyroll"))
-    animes.append(Anime("The ancient magus bride",5,19,30,"crunchyroll"))
 
-    animes.append(Anime("Mitsuboshi colors",6,15,30,"wakanim"))
+
+    animes.append(Anime("Gegege no kitaro",6,8,30,"crunchyroll"))
+    animes.append(Anime("Shokugeki no soma",6,18,30,"crunchyroll"))
 
 def main() :
     initAnime()
@@ -78,7 +75,7 @@ def main() :
                 notif1[index] = True
 
         time.sleep(60*5)
-        if( now.hour == 23) : #reset
+        if( now.hour == 1) : #reset
             notif1 = [False for i in range(len(animes))]
             notif2 = [False for i in range(len(animes))]
     #date = datetime.date(now.year,now.month,now.day)

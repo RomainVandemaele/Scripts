@@ -83,3 +83,134 @@ b=4953
 echo ${#b} # 4
 
 echo $(($RANDOM % ($2 - $1) + $1 ))
+
+#CONDITION
+
+# if [ $# -lt 1 ]
+# then
+#     echo "You need to enter one argument"
+# elif [ $1 -gt 100 ] #result in $?
+# then
+#     echo "You entered a big number"
+#     if (( $1 % 2 == 0 ))
+#     then
+#         echo And is also an even number.
+# fi
+#     pwd
+# fi
+
+
+# if [ -r $1 ] && [ -s $1 ]
+# then
+#     echo This file is useful
+# fi
+
+
+case $space_free in
+    [1-5]*)
+        echo Plenty of disk space available
+    ;;
+    [6-7]*)
+        echo There could be a problem in the near future
+    ;;
+    8*)
+        echo Maybe we should look at clearing out old files
+    ;;
+    9*)
+        echo We could have a serious problem on our hands soon
+    ;;
+    *)
+        echo Something is not quite right here
+    ;;
+esac
+
+#ex1 : print biggest arg
+if [ $# -lt 2 ]
+then
+    echo "You need to enter two integers argument"
+else
+    if [ $1 -ge $2 ]
+    then
+        echo "$1 is the biggest arg"
+    else
+        echo "$2 is the biggest arg"
+    fi
+fi
+
+if [ -f $1 ] 
+then
+    if [ -x $1 ]
+    then
+        echo "This file can be executed"
+    else
+        echo "This file cannot be executed"
+    fi
+else
+    echo "The path is not a file or does not exist"
+fi
+
+
+#LOOP
+counter=1
+while [ $counter -le 10 ]
+do
+    echo $counter
+    ((counter++))
+done
+
+for value in {1..10}
+do
+    if ((value%2==0))
+    then
+        echo $value is even
+    else
+        echo $value is odd 
+    fi
+done
+
+for file in $(ls)
+do
+    echo $file
+done
+#ex2
+for file in $1/*
+do
+    if [ -d "$file" ] #print number of files inside
+    then
+        echo $file is a directory filled with $(ls "$file" | wc -l) files
+    elif [ -f "$file" ]
+    then
+        echo $file is a file which take $(ls -lh "$file" | awk '{print $5}') of memory
+    fi
+done
+
+
+names='Kyle Cartman Stan Quit'
+PS3='Select character: '
+select name in $names
+do
+    if [ $name == 'Quit' ]
+    then
+        break
+    fi
+    echo Hello $name
+done
+
+#FUNCTIONS
+
+function print_something {
+    echo Hello $1
+    return 0 #return status 0=OK
+}
+
+var_change () {
+    local var1='local 1'
+    echo Inside function: var1 is $var1 : var2 is $var2
+    var1='changed again'
+    var2='2 changed again'
+    local a='ok' #without local a can be used outside the function after it is first called
+}
+
+ls () { #overridding ls : ls this function comand ls : classic ls
+    command ls -lh #function used as wrapper to avoid repeating -ls in every use of ls
+}

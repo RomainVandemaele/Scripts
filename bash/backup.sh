@@ -6,6 +6,7 @@ then
     echo Usage: A single argument which is the directory to backup
     exit
 fi
+
 if [ ! -d ~/projects/$1 ]
 then
     echo 'The given directory does not seem to exist (possible typo?)'

@@ -40,21 +40,18 @@ class Anime :
             return False
 
 def initAnime() :
-    animes.append(Anime("Magical girl ore",0,16,00,"crunchyroll"))
-    animes.append(Anime("Golden kamui",0,18,30,"crunchyroll"))
-    animes.append(Anime("Yowamushi pedal 4",0,21,5,"crunchyroll"))
+    animes.append(Anime("Encouragement of climb 3",0,21,00,"crunchyroll"))
 
-    animes.append(Anime("Steins gate 0",2,19,30,"wakanim"))
+    animes.append(Anime("Angels of death",4,15,00,"crunchyroll"))
+    animes.append(Anime("Harukana receive",4,15,30,"crunchyroll"))
+    animes.append(Anime("Chio's school road",4,16,30,"crunchyroll"))
 
-    animes.append(Anime("Hinamatsuri",4,15,30,"crunchyroll"))
+    animes.append(Anime("My hero academia",5,11,30,"crunchyroll"))
+    animes.append(Anime("Les brigades immunitaires",5,18,30,"crunchyroll"))
 
-    animes.append(Anime("My hero academia",5,11,30,"ADN"))
-    animes.append(Anime("Amanchu advance",5,17,0,"crunchyroll"))
-    animes.append(Anime("Darling in the franxx",5,18,0,"crunchyroll"))
-
-
-    animes.append(Anime("Gegege no kitaro",6,8,30,"crunchyroll"))
-    animes.append(Anime("Shokugeki no soma",6,18,30,"crunchyroll"))
+    animes.append(Anime("Asobi asobase",6,15,30,"crunchyroll"))
+    animes.append(Anime("Island",6,16,30,"crunchyroll"))
+    animes.append(Anime("Hanabado",6,18,0,"crunchyroll"))
 
 def main() :
     initAnime()

@@ -35,6 +35,7 @@ public class   test {
 
             Scanner scan = new Scanner(myObj);
             
+            
             while(scan.hasNextLine()) {
                 String line = scan.nextLine();
                 System.out.println(line);

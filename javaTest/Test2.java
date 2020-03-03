@@ -1,11 +1,36 @@
-
+import java.math.*;
 
 public class Test2 {
     public static void main(String[] args) {
         //269656199 494630864 = 494630864
         //81933645 201678107 = 2
-        long r= xorSequence(81933645,201678107 );
-        System.out.println(r);
+        //long r= xorSequence(81933645,201678107 );
+        //System.out.println(r);
+        //System.out.println(count);
+
+
+        powerSum(10,2);
+        //int max =  (int) Math.ceil(  Math.pow((double)6,1.0/2)  );
+        System.out.println(count);
+    }
+
+    static int count = 0;
+    static void powerSum(int X, int N) {
+        if(X==0) {
+            count++;
+        }else {
+            int max =  (int) Math.ceil(  Math.pow((double)X,1.0/N)  );
+            System.out.println(X+ " "+max);
+            for(int i=1;i<=max;i++) {
+                int r = (int) Math.pow((double) i,N);
+                if(X-r >= 0) {
+                    powerSum(X-r,N);
+                }
+                
+            }
+        }
+        
+        //return count;
     }
 
     static long xorSequence(long l, long r) {
@@ -16,21 +41,16 @@ public class Test2 {
         long startIndex = l+2; 
         long endIndex = r;
 
+        long mod[] = { l ,1L,l+1,0L  };
         if(size%2==0) { 
             res = 0;
             startIndex = l+1;
-        }else if(k==0) { // l -> 1 -> l + 1 -> 0 -> ...
-            res = l;
-        }else if(k== 1) {
-            res = 1;
-        }else if(k== 2) {
-            res = l+1;
-        }else if(k== 3) {
-            res = 0;
+        }else {
+            res = mod[(int)k];
         }
 
         
-        if(size%2==0) { //everythong before l cancelled 
+        if(size%2==0) { //everything before l cancelled 
             if( (l%2) == (r%2) ) { //lastIndex = r-1
                 endIndex = r-1;
             }
@@ -43,21 +63,8 @@ public class Test2 {
         }
         k = ( (endIndex - startIndex + 1)/2) %4;
 
-        long mod[] = { endIndex+0 ,2L,endIndex+2,0L  };
-        res = res ^ mod[ (int) k];
-
-        /*if(k==0) { // l -> 2 -> l + 2 -> 0 -> ...
-            res = res ^ endIndex;
-        }else if(k== 1) {
-            res = res ^  2;
-        }else if(k== 2) {
-            res = res ^ (endIndex + 2);
-        }else if(k== 3) {
-            res = res ^ 0;
-        }*/
-
-
+        long[] mod2 = { endIndex+0 ,2L,endIndex+2,0L  };
+        res = res ^ mod2[ (int) k];
         return res;
-
     }
 }

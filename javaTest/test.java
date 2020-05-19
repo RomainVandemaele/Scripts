@@ -6,7 +6,7 @@ import java.lang.Thread;
 
 import java.io.File;  // Import the File class
 import java.util.Scanner; // Import the Scanner class to read text files
-import java.io.FileWriter; 
+import java.io.FileWriter;
 import java.io.IOException;  // Import the IOException class to handle errors
 
 
@@ -34,15 +34,15 @@ public class   test {
             f.close();
 
             Scanner scan = new Scanner(myObj);
-            
-            
+
+
             while(scan.hasNextLine()) {
                 String line = scan.nextLine();
                 System.out.println(line);
             }
             scan.close();
             System.out.println("File size in bytes " + myObj.length());
-
+            myObj.close();
 
         }catch(IOException e) {
             System.out.println("Error with file manipulation");
@@ -62,7 +62,7 @@ public class   test {
         return u;
     }
 
-    enum Days { Monday , Tuesday , Wednesday , Thursday ,Friday , Saturday , Sunday };
+    enum Days { Monday , Tuesday , Wednesday , Thursday ,Friday , Saturday , Sunday }
 
     public static void main(String[] args) throws Exception{
         //Base a = new Base();
@@ -72,15 +72,15 @@ public class   test {
 
         //System.out.println(doSomethingElse(4, "ok"));
 
-        
 
-        Days today = Days.Saturday ;
+
+        Days today = Days.Sunday ;
         if ( today == Days.Sunday ) {
            System . out . println ( " Happy Sunday !" ) ;
            //States st1 = States . Ready , st2 = States . Processing ;
         }
-        
-        
+
+
         int n = 10;
         Integer M[][] = new Integer[n][];
         for(int i=0;i<n;i++){
@@ -94,6 +94,7 @@ public class   test {
         Point pnt2 = new Point ( 0 , 0 ) ;
         doSomething(pnt1,pnt2);
 
+
         try {
             System.out.println("P1: "+pnt1.x+","+pnt1.y);
             System.out.println("P2: "+pnt2.x+","+pnt2.y);
@@ -102,13 +103,15 @@ public class   test {
         }catch(NullPointerException e) {
             throw new Exception("null");
         }
-       
+
 
         Random r = new Random();
         r.nextInt(10);
 
-        files();
-        
+        //files();
+
+
+
     }
 
 }
@@ -121,7 +124,7 @@ class Derived extends Base {
     public void echo ( ) { System . out . println ( "Derived" ) ; }
  }
 
- class Base2 {
+class Base2 {
     public final void echo ( ) { //cannot be override
         System . out . println ( "Base" ) ;
     }

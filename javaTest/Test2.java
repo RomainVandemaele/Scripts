@@ -1,4 +1,6 @@
 import java.math.*;
+import java.util.HashMap;
+import java.util.Vector;
 
 public class Test2 {
     public static void main(String[] args) {
@@ -8,7 +10,10 @@ public class Test2 {
         //System.out.println(r);
         //System.out.println(count);
 
-
+        Vector<Integer> v = new Vector<Integer>();
+        v.add(5);
+        HashMap<Integer,String> hm = new HashMap<Integer,String>();
+        hm.put(12, "douze");
         powerSum(10,2);
         //int max =  (int) Math.ceil(  Math.pow((double)6,1.0/2)  );
         System.out.println(count);

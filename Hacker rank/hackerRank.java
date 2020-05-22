@@ -34,6 +34,8 @@ public class hackerRank {
                 }
                 //indexes.add(i);
                 changeTD++;
+            }else{
+                c+=s.charAt(i);
             }
         }
         extra =  k- changeTD;
@@ -46,21 +48,29 @@ public class hackerRank {
         while(extra > 0 && i<n/2) {
             if(c.charAt(i)!='9') {
                 if(kI < indexes.size() && i==indexes.get(kI)) {
-                    c = c.substring(0,i) + "9" + c.substring(i+1,n-1-i) + "9" + c.substring(n-i);
+                    c = c.substring(0,i) + "9" + c.substring(i+1);
                     extra--;
                     kI++;
                 }else if(extra >= 2 ) {
-                    c = c.substring(0,i) + "9" + c.substring(i+1,n-1-i) + "9" + c.substring(n-i);
+                    c = c.substring(0,i) + "9" + c.substring(i+1);
                     extra-=2;
                 }
             }
             i++;
         }
         
-        if(extra >=1 && n%2==1) { //number in the middle
-            c = c.substring(0,n/2) + "9" + c.substring(n/2+1) ;
+        if(n%2==1) { //number in the middle
+            if(extra > 0) {
+                c += "9"; 
+            }else {
+                c += s.charAt(n/2+1);
+            } 
         }
-        System.out.println(c);
+        System.out.println(c.length()+ " "+ n/2);
+        for(int j=0;j<n/2;++j) {
+            c += c.charAt(n/2-1-j);
+        }
+        System.out.println(c+"\n");
         return c;
     }
 
@@ -68,7 +78,7 @@ public class hackerRank {
 
         highestValuePalindrome("5", 1, 1);
         highestValuePalindrome("932239", 6, 2);
-        highestValuePalindrome("12321", 5, 1);
+        highestValuePalindrome("777", 3, 0);
         
         /*for(int j=0;j<res.length;++j) {
             System.out.println(res[j]);

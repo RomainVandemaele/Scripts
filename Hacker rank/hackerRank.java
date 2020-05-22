@@ -8,77 +8,71 @@ import java.util.regex.*;
 
 public class hackerRank {
 
-    /**Number of words in string formated like "saveChangesInTheEditor" */
-    static int camelcase(String s) {
-        int count=1;
-        for(int i=0;i<s.length();++i) {
-            String l1 = s.substring(i,i+1).toLowerCase();
-            String l2 = s.substring(i,i+1);
-            System.out.println(l1+" "+l2);
-            if(l1.compareTo(l2)!=0) {
-                count+=1;
+   
+
+    static String highestValuePalindrome(String s, int n, int k) {
+        int changeTD = 0;
+        int extra = 0;
+        String c = "";
+        Vector<Integer> indexes = new Vector<Integer>();
+        for(int i=0;i<n/2;++i) {
+            if(s.charAt(i)!=s.charAt(n-1-i)) {
+                int c1 = (int) s.charAt(i) - 48;
+                int c2 = (int) s.charAt(n-1-i) - 48;
+                if(c1!=9 && c2!=9) {
+                    indexes.add(i);
+                    if(c1 > c2) {
+                        c+=s.charAt(i);
+                        //c = c.substring(0,n-1-i) + s.charAt(i) + c.substring(n-i);
+                    }else {
+                        c+=s.charAt(n-1-i);
+                        //c = c.substring(0,i) + s.charAt(n-1-i) + c.substring(i+1);
+                    }
+                }else if(c1==9 || c2==9) {
+                    c +="9";
+                    //c = c.substring(0,i) + "9" + c.substring(i+1,n-1-i) + "9" + c.substring(n-i);
+                }
+                //indexes.add(i);
+                changeTD++;
             }
         }
-        return count;
-    }
-
-     
-     static int minimumNumber(int n, String password) {
-        // Return the minimum number of characters to make the password strong
-        int missingChar = 0;
-
-        Pattern p1 = Pattern.compile("0|1|2|3|4|5|6|7|8|9");   // the pattern to search for
-        Pattern p2 = Pattern.compile("[abcdefghijklmnopqrstuvwxyz]");
-        Pattern p3 = Pattern.compile("[ABCDEFGHIJKLMNOPQRSTUVWXYZ]");
-        Pattern p4 = Pattern.compile("[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\-\\+]");
-
-        Matcher m = p1.matcher(password);
-        if(!m.find()) {missingChar++;}
-
-        m = p2.matcher(password);
-        if(!m.find()) {missingChar++;}
-
-        m = p3.matcher(password);
-        if(!m.find()) {missingChar++;}
-
-        m = p4.matcher(password);
-        if(!m.find()) {missingChar++;}
-
-        if(missingChar+password.length() < 6) {
-            missingChar += 6 - (missingChar+password.length());
+        extra =  k- changeTD;
+        if(extra < 0) {
+            return "-1";
         }
-       
-        return missingChar;
-    }
-
-
-    static String caesarCipher(String s, int k) {
-        k=k%26;
-        String cipher = "";
-        for(int i=0;i<s.length();i++) {
-            int value = (int) s.charAt(i);
-            //System.out.println(value);
-            if( 97 <= value && value <= 122) { //lower case letter
-                value+=k;
-                if(value > 122) {
-                    value = 96 + (value-122);
-                }
-            }else if( 65 <= value && value <= 90) { //Upper case letter
-                value+=k;
-                if(value > 90) {
-                    value = 64 + (value-90);
+        //System.out.println("extra : "+extra);
+        int kI = 0;
+        int i=0;
+        while(extra > 0 && i<n/2) {
+            if(c.charAt(i)!='9') {
+                if(kI < indexes.size() && i==indexes.get(kI)) {
+                    c = c.substring(0,i) + "9" + c.substring(i+1,n-1-i) + "9" + c.substring(n-i);
+                    extra--;
+                    kI++;
+                }else if(extra >= 2 ) {
+                    c = c.substring(0,i) + "9" + c.substring(i+1,n-1-i) + "9" + c.substring(n-i);
+                    extra-=2;
                 }
             }
-            //System.out.println(value);
-            char c = (char) value;
-            cipher += c;
+            i++;
         }
-        return cipher;
-
+        
+        if(extra >=1 && n%2==1) { //number in the middle
+            c = c.substring(0,n/2) + "9" + c.substring(n/2+1) ;
+        }
+        System.out.println(c);
+        return c;
     }
 
     public static void main(String[] args) {
-        String res = caesarCipher("middle-Outz", 2);
-        System.out.println(res);
+
+        highestValuePalindrome("5", 1, 1);
+        highestValuePalindrome("932239", 6, 2);
+        highestValuePalindrome("12321", 5, 1);
+        
+        /*for(int j=0;j<res.length;++j) {
+            System.out.println(res[j]);
+        }*/
+        
     }
 }

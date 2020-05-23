@@ -46,6 +46,20 @@ vector<int> climbingLeaderboard(vector<int> scores, vector<int> alice) {
     return aliceRank;
 }
 
+
+int superDigit(string n, int k) {
+    long count = 0;
+    for (size_t i=0; i < n.size(); ++i) {
+        int number = n[i] -48;
+        count +=number;
+    }
+    count = count *k;
+    return superDigit(count, 1);
+    //cout << count << endl;
+    //return count;
+
+}
+
 int main(int argc, char const *argv[])
 {
     vector<int> score;
